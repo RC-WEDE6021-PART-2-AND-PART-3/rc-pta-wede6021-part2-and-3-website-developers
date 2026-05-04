@@ -37,6 +37,28 @@
     <script>
         lucide.createIcons();
 
+        function addToBag(productId) {
+            const formData = new FormData();
+            formData.append('productId', productId);
+            
+            fetch('add_to_cart.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    showToast(data.message);
+                } else {
+                    showToast(data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('Something went wrong', 'error');
+            });
+        }
+
         function showToast(message, type = 'success') {
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
@@ -65,15 +87,8 @@
             }, 3000);
         }
 
-        // Add to bag interaction
-        document.querySelectorAll('button').forEach(btn => {
-            if(btn.innerText.includes('Add to Bag') || btn.querySelector('[data-lucide="shopping-cart"]')) {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showToast('Item added to your bag!');
-                });
-            }
-        });
+        // Initial call to icons
+        lucide.createIcons();
     </script>
 </body>
 </html>
