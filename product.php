@@ -46,12 +46,12 @@ if (!$product) {
             <p class="text-gray-500 leading-relaxed"><?php echo $product['description']; ?></p>
 
             <div class="flex gap-4">
-                <button class="flex-1 bg-indigo-600 text-white py-4 rounded-full font-bold text-lg hover:bg-indigo-700 transition-all flex items-center justify-center gap-2">
+                <button onclick="addToBag(<?php echo $product['productId']; ?>)" class="flex-1 bg-indigo-600 text-white py-4 rounded-full font-bold text-lg hover:bg-indigo-700 transition-all flex items-center justify-center gap-2">
                     <i data-lucide="shopping-cart" class="w-5 h-5"></i> Add to Bag
                 </button>
-                <button class="p-4 border border-gray-200 rounded-full hover:bg-gray-100 transition-colors">
+                <a href="messaging.php?productId=<?php echo $product['productId']; ?>&sellerId=<?php echo $product['userId']; ?>" class="p-4 border border-gray-200 rounded-full hover:bg-gray-100 transition-colors">
                     <i data-lucide="message-square" class="w-6 h-6 text-gray-600"></i>
-                </button>
+                </a>
             </div>
 
             <!-- Seller Info -->
