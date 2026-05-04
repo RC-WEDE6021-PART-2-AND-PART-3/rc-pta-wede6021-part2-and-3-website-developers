@@ -35,6 +35,9 @@
                         <input type="text" placeholder="Find yours..." class="bg-transparent border-none outline-none text-sm w-40 lg:w-64">
                     </div>
                     <?php if(isset($_SESSION['userId'])): ?>
+                        <a href="messaging.php" class="p-2 hover:bg-gray-100 rounded-full transition-colors relative">
+                            <i data-lucide="message-square" class="w-5 h-5"></i>
+                        </a>
                         <a href="cart.php" class="p-2 hover:bg-gray-100 rounded-full transition-colors relative">
                             <i data-lucide="shopping-cart" class="w-5 h-5"></i>
                         </a>
