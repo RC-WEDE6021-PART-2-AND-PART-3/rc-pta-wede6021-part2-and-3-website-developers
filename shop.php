@@ -60,21 +60,39 @@ if ($categoryFilter) {
             if ($result && $result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
             ?>
-                <div class="group bg-white rounded-[2rem] border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                <div class="group bg-white rounded-[2.5rem] border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 relative flex flex-col">
                     <div class="aspect-[4/5] bg-gray-100 relative overflow-hidden">
                         <img src="<?php echo $row['imageUrl']; ?>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-gray-900 shadow-sm border border-gray-100">
+                        
+                        <!-- Badges -->
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-gray-900 shadow-sm border border-gray-100 inline-block w-fit">
                                 <?php echo $row['condition_status']; ?>
                             </span>
+                            <span class="bg-green-600/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-white shadow-sm inline-block w-fit">
+                                <i data-lucide="leaf" class="w-3 h-3 inline mr-1"></i> Sustainable
+                            </span>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                            <button onclick="addToBag(<?php echo $row['productId']; ?>)" class="bg-white text-gray-900 p-4 rounded-full shadow-xl hover:scale-110 active:scale-95 transition-all cursor-pointer">
+                                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                            </button>
+                            <a href="product.php?id=<?php echo $row['productId']; ?>" class="bg-indigo-600 text-white p-4 rounded-full shadow-xl hover:scale-110 active:scale-95 transition-all">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <div class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest"><?php echo $row['brand']; ?></div>
-                        <h3 class="font-bold text-gray-900 mt-1"><?php echo $row['name']; ?></h3>
-                        <div class="flex justify-between items-center mt-4">
-                            <span class="font-black text-lg">R<?php echo number_format($row['price'], 2); ?></span>
-                            <a href="product.php?id=<?php echo $row['productId']; ?>" class="text-indigo-600 text-xs font-bold uppercase tracking-wider hover:underline">View Piece</a>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <div class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest"><?php echo $row['brand']; ?></div>
+                            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest italic">Size <?php echo $row['size']; ?></div>
+                        </div>
+                        <h3 class="font-bold text-gray-900 leading-tight mb-4"><?php echo $row['name']; ?></h3>
+                        <div class="mt-auto flex justify-between items-center bg-gray-50 -mx-6 -mb-6 p-6">
+                            <span class="font-black text-xl text-gray-900">R<?php echo number_format($row['price'], 2); ?></span>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Market Value: <span class="line-through">R<?php echo number_format($row['price'] * 1.8, 0); ?></span></span>
                         </div>
                     </div>
                 </div>
