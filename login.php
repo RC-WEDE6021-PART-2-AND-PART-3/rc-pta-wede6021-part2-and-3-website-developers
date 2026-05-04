@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
         </form>
 
         <div class="text-center text-sm text-gray-400">
-            Don't have an account? <a href="#" class="text-indigo-600 font-bold hover:underline">Sign up</a>
+            Don't have an account? <a href="register.php" class="text-indigo-600 font-bold hover:underline">Sign up</a>
         </div>
     </div>
 </main>
