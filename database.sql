@@ -1,4 +1,7 @@
 /* database.sql */
+CREATE DATABASE IF NOT EXISTS `pastimes_db2`;
+USE `pastimes_db2`;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -59,7 +62,8 @@ CREATE TABLE `messages` (
 
 -- Seed data with affordable ZAR prices and Sneakers
 INSERT INTO `users` (`fullName`, `email`, `passwordHash`, `role`) VALUES 
-('Thabo Maboso', 'thabo@example.co.za', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'seller');
+('Thabo Maboso', 'thabo@example.co.za', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'seller'),
+('Administrator', 'admin@pastimes.co.za', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
 
 INSERT INTO `products` (`userId`, `name`, `description`, `price`, `size`, `category`, `brand`, `condition_status`, `colour`, `imageUrl`) VALUES 
 (1, 'Vintage Corduroy Shirt', 'Premium brown corduroy piece.', 180.00, 'M', 'Menswear', 'Vintage', 'Excellent', 'Brown', 'https://images.unsplash.com/photo-1588731247530-4076fc9919a4?q=80&w=687&auto=format&fit=crop'),
